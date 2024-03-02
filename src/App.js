@@ -1,9 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
-import Main from './components/Main';
-import Nav from './components/Nav/Nav';
-import SearchResults from './components/SearchResults';
+// import Main from './components/Main';
+// import Nav from './components/Nav/Nav';
+// import SearchResults from './components/SearchResults';
+import Home from './pages/Home';
+import Search from './pages/Search';
+import NotFound from './pages/NotFound';
 import { SearchProvider } from './context/SearchContext';
+import { Routes, Route } from 'react-router-dom';
+
 // import Row from "./components/Row/Row";
 // import Nav from './components/Nav';
 // import Row from "./components/Row";
@@ -16,10 +20,27 @@ function App() {
   return (
     <div className="App">
       <SearchProvider>
-        <Nav />
+        {/* <Nav />
         <Main />
-        <SearchResults />
+        <SearchResults /> */}
+        
+        {/* <Switch>
+          <Route exact={true} path="/" Component={Home} />
+          <Route exact={true} path="/search/:query" Component={Search} />
+          <Route Component={NotFound} />
+        </Switch> */}
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/Search/:query" element={<Search />} />
+          {/* Error route */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+
       </SearchProvider>
+
+
+
       {/* <Nav />
       <Row title="NETFLIX ORIGINALS" isLargePoster fetchUrl={requests.fetchNetflixOriginals} />
       <Row title="Trending" fetchUrl={requests.fetchTrending} />
